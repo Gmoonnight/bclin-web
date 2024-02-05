@@ -3,7 +3,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": true,		// Stict compilation checks
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -18,7 +18,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"]		// Just alias for the prefix of path
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
