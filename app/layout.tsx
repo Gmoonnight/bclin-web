@@ -1,5 +1,5 @@
 import "./globals.css";
-import {inter} from '@/app/fonts'
+import {inter} from '@/app/fonts';
 
 export default function RootLayout({children} : Readonly<{children: React.ReactNode}>) {
 	return (
