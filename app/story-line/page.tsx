@@ -1,7 +1,9 @@
+import InfiniteCanvas from "@/components/ic/InfiniteCanvas"
+
 export default function Page() {
 	return (
-		<div>
-			<p>Story Line</p>
-		</div>
+		<main>
+			<InfiniteCanvas />
+		</main>
 	);
 }

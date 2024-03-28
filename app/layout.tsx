@@ -4,7 +4,7 @@ import {inter} from '@/app/fonts';
 export default function RootLayout({children} : Readonly<{children: React.ReactNode}>) {
 	return (
 		<html lang = "en">
-			<body className = {`${inter.className} antialiased bg-white`}>{children}</body>
+			<body className = {`${inter.className} antialiased bg-slate-600`}>{children}</body>
 		</html>
 	);
 }
