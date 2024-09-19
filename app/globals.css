@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-    @apply overscroll-none
+    @apply overscroll-none w-screen h-screen
 }

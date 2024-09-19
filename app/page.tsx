@@ -1,15 +1,9 @@
-'use client'
+import Background from "@/components/Background";
 
-import { CreatorProvider } from "./ui/CreatorProvider";
-import World from "./ui/World";
-
-export default function Home() {
-
+export default function Page() {
     return (
-        <div className = "w-screen h-screen">
-            <CreatorProvider>
-                <World />
-            </CreatorProvider> 
-        </div>
+        <Background className="bg-home-default md:bg-home-md lg:bg-home-lg">
+
+        </Background>
     )
 }

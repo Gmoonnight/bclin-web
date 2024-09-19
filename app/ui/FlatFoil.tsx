@@ -25,8 +25,7 @@ function FlatFoil() {
                     style = {{
                         transform: `translate(${view.x}px, ${view.y}px)`,
                     }}
-            >
-        </div>
+                />
             }
         </div>
     )

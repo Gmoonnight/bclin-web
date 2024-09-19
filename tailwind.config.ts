@@ -8,10 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        /**
+         * At present, we only adapt to tablets and computer screens.
+         */
+        // [768px, 1024px)
+        'md': '768px',
+        // >= 1024px
+        'lg': '1024px',
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'home-default': "url('/images/home/bg-home-default.jpg')",
+        'home-md': "url('/images/home/bg-home-md.jpg')",
+        'home-lg': "url('/images/home/bg-home-lg.jpg')",
       },
     },
   },
