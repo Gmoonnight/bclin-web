@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        
+      },
       screens: {
         /**
          * At present, we only adapt to tablets and computer screens.

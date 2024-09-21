@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-    @apply overscroll-none w-screen h-screen
+    /* The default size of body is equal to viewport size. */
+    @apply w-screen h-screen overflow-x-hidden overflow-y-auto overscroll-none
 }
