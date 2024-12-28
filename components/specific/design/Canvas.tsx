@@ -1,9 +1,9 @@
 import { memo, useRef } from "react"
-import useResizeEvent from "../lib/hooks/useResizeEvent"
-import useWheelEvent from "../lib/hooks/useWheelEvent"
-import useCreator from "../lib/hooks/useCreator"
+import useResizeEvent from "../../../lib/hooks/useResizeEvent"
+import useWheelEvent from "../../../lib/hooks/useWheelEvent"
+import useCreator from "../../../lib/hooks/useCreator"
 
-function FlatFoil() {
+function Canvas() {
     console.log("FlatFoil rendered!")
 
     const c = useCreator()
@@ -31,4 +31,4 @@ function FlatFoil() {
     )
 }
 
-export default memo(FlatFoil)
+export default memo(Canvas)

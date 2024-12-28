@@ -1,14 +1,14 @@
 'use client'
 
-import { CreatorProvider } from "../ui/CreatorProvider"
-import World from "../ui/World"
+import Canvas from "@/components/specific/design/Canvas"
+import { CreatorProvider } from "../../components/specific/design/CreatorProvider"
 
 export default function Page() {
 
     return (
-        <div className = "w-screen h-screen">
+        <div className = "w-full h-full">
             <CreatorProvider>
-                <World />
+                <Canvas/>
             </CreatorProvider> 
         </div>
     )

@@ -1,9 +1,9 @@
 import { createContext, useRef } from 'react'
-import Creator from '../lib/Creator'
-import useRefState from '../lib/hooks/useRefState'
-import CS from '../lib/states/CS'
-import CT from '../lib/thinking/common/CT'
-import ViewVertex from '../lib/thinking/ViewVertex'
+import Creator from '../../../lib/Creator'
+import useRefState from '../../../lib/hooks/useRefState'
+import CS from '../../../lib/states/CS'
+import CT from '../../../lib/thinking/common/CT'
+import ViewVertex from '../../../lib/thinking/ViewVertex'
 
 export const CreatorContext = createContext<Creator | null>(null)
 

@@ -1,4 +1,4 @@
-import { CreatorContext } from "@/app/ui/CreatorProvider"
+import { CreatorContext } from "@/components/specific/design/CreatorProvider"
 import { useContext } from "react"
 
 export default function useCreator() {
