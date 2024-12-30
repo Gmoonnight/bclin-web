@@ -1,15 +1,12 @@
+import Creator from "@/lib/cg/Creator";
 import { RefObject, useEffect } from "react";
-import EventTypeEnum from "../events/common/EventTypeEnum";
-import useCreator from "./useCreator";
-import Creator from "../Creator";
+import EventTypeEnum from "../../cg/enums/EventTypeEnum";
 
-export default function useWheelEvent<T extends HTMLElement>(ref : RefObject<T>, c : Creator) : void {
-    const cT = c.cTR.current
-
+export default function useWheelEvent<T extends HTMLElement>(ref : RefObject<T>, creator : Creator) : void {
     useEffect(() => {
         ref.current!.addEventListener('wheel', (e : WheelEvent) => {
-            cT.publish({
-                from: c,
+            creator.publish({
+                from: creator,
                 type: EventTypeEnum.WheelEvent,
                 deltaX: e.deltaX,
                 deltaY: e.deltaY,

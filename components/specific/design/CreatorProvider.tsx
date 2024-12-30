@@ -1,30 +1,46 @@
-import { createContext, useRef } from 'react'
-import Creator from '../../../lib/Creator'
-import useRefState from '../../../lib/hooks/useRefState'
-import CS from '../../../lib/states/CS'
-import CT from '../../../lib/thinking/common/CT'
-import ViewVertex from '../../../lib/thinking/ViewVertex'
+import Creator from '@/lib/cg/Creator'
+import EventTypeEnum from '@/lib/cg/enums/EventTypeEnum'
+import VertexTypeEnum from '@/lib/cg/enums/VertexTypeEnum'
+import Graph from '@/lib/cg/graph/Graph'
+import VertexInterface from '@/lib/cg/graph/VertexInterface'
+import { createContext } from 'react'
+import ViewVertex from '../../../lib/cg/graph/ViewVertex'
+import Scene from '../../../lib/cg/states/Scene'
+import ReactStateManager from '../../../lib/react/ReactStateManager'
+import useRefState from '../../../lib/react/hooks/useRefState'
 
 export const CreatorContext = createContext<Creator | null>(null)
 
-
 export function CreatorProvider({children} : {children : React.ReactNode}) {
-    const iCS : CS = {
-        view : null,
+    const scene : Scene = {
+        camera : {
+            x : 0,
+            y : 0,
+            z : 0,
+        },
+        canvas : null,
+        viewport : null,
+        topoSortMap : new Map([
+            [EventTypeEnum.ResizeEvent, new Map([
+                [1, [VertexTypeEnum.View]]
+            ])],
+            [EventTypeEnum.WheelEvent, new Map([
+                [1, [VertexTypeEnum.View]]
+            ])]
+        ])
     }
+    const [state, ref, update] = useRefState<Scene>(scene)
+    const sm = new ReactStateManager(state, ref, update)
 
-    const iCT : CT = new CT(
+    const vertexMap = new Map<VertexTypeEnum, VertexInterface>(
         [
-            new ViewVertex(null, null)
-        ],
-        new Map()
-    ).buildIndex()
+            new ViewVertex()
+        ].map(vertex => [vertex.getType(), vertex])
+    )
 
+    const graph = new Graph(vertexMap, scene.topoSortMap)
 
-    const [cS, cSR, cSRUpdate] = useRefState<CS>(iCS)
-    const cTR = useRef<CT>(iCT)
-
-    const creator : Creator = {cS, cSR, cSRUpdate, cTR}
+    const creator = new Creator(sm, graph)
 
     return (
         <CreatorContext.Provider value = {creator}>

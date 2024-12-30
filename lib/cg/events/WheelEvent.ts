@@ -1,4 +1,4 @@
-import BaseEvent from "./common/BaseEvent";
+import BaseEvent from "./BaseEvent";
 
 export default interface WheelEvent extends BaseEvent {
     /**

@@ -1,29 +1,31 @@
 import { memo, useRef } from "react"
-import useResizeEvent from "../../../lib/hooks/useResizeEvent"
-import useWheelEvent from "../../../lib/hooks/useWheelEvent"
-import useCreator from "../../../lib/hooks/useCreator"
+import useResizeEvent from "../../../lib/cg/useResizeEvent"
+import useWheelEvent from "../../../lib/react/hooks/useWheelEvent"
+import useCreator from "../../../lib/react/hooks/useCreator"
 
 function Canvas() {
     console.log("FlatFoil rendered!")
 
-    const c = useCreator()
+    const creator = useCreator()
 
     // Add event listeners for handling events.
     const ref = useRef<HTMLDivElement>(null)
 
-    useResizeEvent<HTMLDivElement>(ref, c)
-    useWheelEvent<HTMLDivElement>(ref, c)
+    useResizeEvent<HTMLDivElement>(ref, creator)
+    useWheelEvent<HTMLDivElement>(ref, creator)
 
-    const view = c.cS.view
-
+    const scene = creator.getScene()
+    const camera = scene.camera
+    const canvas = scene.canvas
+    
     return (
         <div className = "w-full h-full bg-red-100 relative overflow-hidden" ref = {ref}>
             {
-                !view ? <p>Loading...</p> :
+                !canvas ? <p>Loading...</p> :
                 <div 
                     className = "bg-black w-20 h-20 left-10 relative" 
                     style = {{
-                        transform: `translate(${view.x}px, ${view.y}px)`,
+                        transform: `translate(${camera.x}px, ${camera.y}px)`,
                     }}
                 />
             }

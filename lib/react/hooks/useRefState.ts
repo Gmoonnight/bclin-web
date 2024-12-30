@@ -1,5 +1,4 @@
 import { Dispatch, MutableRefObject, SetStateAction, useCallback, useRef, useState } from "react";
-import Creator from "../Creator";
 
 export default function useRefState<T>(initialValue : T) : [state : T, ref : MutableRefObject<T>, update : Dispatch<SetStateAction<T>>] {
     const ref = useRef<T>(initialValue)
