@@ -19,9 +19,10 @@ export default class ViewVertex extends AbstractVertex {
 
     public handleResizeEvent(e : Event) : void {
         const event = e as ResizeEvent
+        
         const creator = event.from
-
-        creator.updateScene(produce(creator.getScene(), draft => {
+        
+        creator.sceneRef.current = produce(creator.sceneRef.current!, draft => {
             if(!draft.canvas || !draft.viewport) {
                 draft.canvas = {
                     w : event.w,
@@ -42,11 +43,9 @@ export default class ViewVertex extends AbstractVertex {
             draft.viewport.w = event.w * 2
             draft.viewport.h = event.h * 2
 
-            return
-        }))
-
-        console.log("canvas: " + JSON.stringify(creator.getScene().canvas) + ", viewport: " + JSON.stringify(creator.getScene().viewport))
-        return
+        })
+        
+        console.log("event: " + JSON.stringify(event) + ", scene: " + JSON.stringify(creator.sceneRef.current))
     }
 
     public handleWheelEvent(e : Event) : void {
@@ -54,12 +53,16 @@ export default class ViewVertex extends AbstractVertex {
 
         const creator = event.from
 
-        creator.updateScene(produce(creator.getScene(), draft => {
+        creator.sceneRef.current = produce(creator.sceneRef.current!, draft => {
             draft.camera!.x -= event.deltaX
             draft.camera!.y -= event.deltaY
-        }))
+        })
 
-        console.log("camera: " + JSON.stringify(creator.getScene().camera))
+        creator.setCameraState(creator.sceneRef.current.camera)
+
+        creator.websocketRef.current!.send(JSON.stringify(creator.sceneRef.current.camera))
+
+        console.log("event: " + JSON.stringify(event) + ", scene: " + JSON.stringify(creator.sceneRef.current))
         return
     }
 }

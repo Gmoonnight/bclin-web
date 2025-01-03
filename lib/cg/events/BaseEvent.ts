@@ -1,4 +1,5 @@
-import Creator from "../Creator";
+
+import { Creator } from "@/components/specific/design/CreatorProvider";
 import EventTypeEnum from "../enums/EventTypeEnum";
 
 export default interface BaseEvent {

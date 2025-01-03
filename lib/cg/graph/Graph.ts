@@ -32,7 +32,7 @@ export default class Graph {
         })
     }
 
-    public async publish(event : Event) {
+    public async dispatch(event : Event) {
         const eventMap = this.map.get(event.type)
 
         if(!eventMap) return
